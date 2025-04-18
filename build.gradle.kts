@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "one.tranic"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -28,7 +28,7 @@ dependencies {
 
     compileOnly("com.viaversion:viaversion-api:5.2.2-SNAPSHOT")
 
-    implementation("one.tranic:t-base:1.2.6")
+    implementation("one.tranic:t-base:1.2.7")
     implementation("one.tranic:t-utils:1.2.2.1")
 }
 
