@@ -17,6 +17,7 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class TVelocity {
     private static boolean initialized = false;
     private static ProxyServer server;
@@ -25,12 +26,12 @@ public class TVelocity {
         if (initialized) return;
         server = proxyServer;
         try {
-            Reflect.assignToStaticFieldIfUninitialized(TBase.class, "getConsoleSourceSupplier", (Supplier<CommandSource<?, ?>>) TVelocity::getVelocityConsoleSource, false);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlayerWithStringMethod", (Function<String, Player<?>>) VelocityPlayer::createPlayer, false);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlayerWithUUIDMethod", (Function<UUID, Player<?>>) VelocityPlayer::createPlayer, false);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getOnlinePlayersMethod", (Supplier<List<Player<?>>>) VelocityPlayers::getOnlinePlayers, false);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlatformOnlinePlayersMethod", (Supplier<List<?>>) VelocityPlayers::getPlatformOnlinePlayers, false);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getOnlinePlayersNameMethod", (Supplier<List<String>>) VelocityPlayers::getOnlinePlayersName, false);
+            Reflect.assignToStaticFieldIfUninitialized(TBase.class, "getConsoleSourceSupplier", (Supplier<CommandSource<?, ?>>) TVelocity::getVelocityConsoleSource);
+            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlayerWithStringMethod", (Function<String, Player<?>>) VelocityPlayer::createPlayer);
+            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlayerWithUUIDMethod", (Function<UUID, Player<?>>) VelocityPlayer::createPlayer);
+            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getOnlinePlayersMethod", (Supplier<List<Player<?>>>) VelocityPlayers::getOnlinePlayers);
+            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlatformOnlinePlayersMethod", (Supplier<List<?>>) VelocityPlayers::getPlatformOnlinePlayers);
+            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getOnlinePlayersNameMethod", (Supplier<List<String>>) VelocityPlayers::getOnlinePlayersName);
         } catch (Exception e) {
             e.printStackTrace();
             return;
