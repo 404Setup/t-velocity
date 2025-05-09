@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "one.tranic"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -28,8 +28,8 @@ dependencies {
 
     compileOnly("com.viaversion:viaversion-api:5.2.2-SNAPSHOT")
 
-    implementation("one.tranic:t-base:1.2.8")
-    implementation("one.tranic:t-utils:1.2.3")
+    implementation("one.tranic:t-base:1.2.9")
+    implementation("one.tranic:t-utils:1.3.0")
 }
 
 val targetJavaVersion = 17

@@ -26,12 +26,12 @@ public class TVelocity {
         if (initialized) return;
         server = proxyServer;
         try {
-            Reflect.assignToStaticFieldIfUninitialized(TBase.class, "getConsoleSourceSupplier", (Supplier<CommandSource<?, ?>>) TVelocity::getVelocityConsoleSource);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlayerWithStringMethod", (Function<String, Player<?>>) VelocityPlayer::createPlayer);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlayerWithUUIDMethod", (Function<UUID, Player<?>>) VelocityPlayer::createPlayer);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getOnlinePlayersMethod", (Supplier<List<Player<?>>>) VelocityPlayers::getOnlinePlayers);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getPlatformOnlinePlayersMethod", (Supplier<List<?>>) VelocityPlayers::getPlatformOnlinePlayers);
-            Reflect.assignToStaticFieldIfUninitialized(Players.class, "getOnlinePlayersNameMethod", (Supplier<List<String>>) VelocityPlayers::getOnlinePlayersName);
+            Reflect.setNotNullStaticField(TBase.class, "getConsoleSourceSupplier", (Supplier<CommandSource<?, ?>>) TVelocity::getVelocityConsoleSource);
+            Reflect.setNotNullStaticField(Players.class, "getPlayerWithStringMethod", (Function<String, Player<?>>) VelocityPlayer::createPlayer);
+            Reflect.setNotNullStaticField(Players.class, "getPlayerWithUUIDMethod", (Function<UUID, Player<?>>) VelocityPlayer::createPlayer);
+            Reflect.setNotNullStaticField(Players.class, "getOnlinePlayersMethod", (Supplier<List<Player<?>>>) VelocityPlayers::getOnlinePlayers);
+            Reflect.setNotNullStaticField(Players.class, "getPlatformOnlinePlayersMethod", (Supplier<List<?>>) VelocityPlayers::getPlatformOnlinePlayers);
+            Reflect.setNotNullStaticField(Players.class, "getOnlinePlayersNameMethod", (Supplier<List<String>>) VelocityPlayers::getOnlinePlayersName);
         } catch (Exception e) {
             e.printStackTrace();
             return;
