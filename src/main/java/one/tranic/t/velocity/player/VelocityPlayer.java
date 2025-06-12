@@ -14,13 +14,15 @@ import java.util.UUID;
 
 public class VelocityPlayer implements one.tranic.t.base.player.Player<Player> {
     private final Player player;
+    private final BedrockPlayer<Player> bedrockPlayer;
 
     public VelocityPlayer(CommandSource commandSource) {
-        this.player = (Player) commandSource;
+        this((Player) commandSource);
     }
 
     public VelocityPlayer(Player player) {
         this.player = player;
+        this.bedrockPlayer = new BedrockPlayer<>(this);
     }
 
     /**
@@ -61,6 +63,11 @@ public class VelocityPlayer implements one.tranic.t.base.player.Player<Player> {
     }
 
     @Override
+    public @NotNull BedrockPlayer<Player> toBedrockPlayer() {
+        return bedrockPlayer;
+    }
+
+    @Override
     public @NotNull String getUsername() {
         return player.getUsername();
     }
@@ -89,7 +96,7 @@ public class VelocityPlayer implements one.tranic.t.base.player.Player<Player> {
     @Override
     public long getPing() {
         if (isBedrockPlayer()) {
-            long ping = BedrockPlayer.getPing(getUniqueId());
+            long ping = bedrockPlayer.ping();
             if (ping != -1) return ping;
         }
         return player.getPing();
@@ -102,7 +109,7 @@ public class VelocityPlayer implements one.tranic.t.base.player.Player<Player> {
 
     @Override
     public @Nullable String getClientBrand() {
-        if (isBedrockPlayer()) return BedrockPlayer.getPlatform(getUniqueId());
+        if (isBedrockPlayer()) return bedrockPlayer.platform();
         return player.getClientBrand();
     }
 
